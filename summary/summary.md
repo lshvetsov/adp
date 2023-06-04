@@ -55,3 +55,9 @@ LCM = (A / GDC(A,B)) * B
 
 **Prime factorization** is a process of splitting a number into prime multipliers. Algorithm = check all numbers from 2 to a square root of the input. 
 
+
+
+# Data structures
+
+
+

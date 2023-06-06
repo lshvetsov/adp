@@ -1,6 +1,15 @@
 # Algorithms 
 
+In computer programming terms, an algorithm is a set of well-defined instructions to solve a particular problem. It takes a set of input(s) and produces the desired output.
+
+- input and output should be defined precisely, 
+- each step in the algorithm should be clear and unambiguous, 
+- algorithms should be most effective among many ways to solve a problem.
+- algorithm should be generic (for usage with any programming language)
+
 ## Algorithms complexity
+
+**Asymptotic analysis** is measure of how performance has changed with the change of the input size. 
 
 **Why?**
 - Compare algorithms
@@ -8,8 +17,15 @@
 - Provability
 
 **Key thing** - consuming resources (time, RAM | Disk space, network, CPU, hardware etc)  
-*Cases*: best, average, worst, excepted, every.  
-**Big O** - estimate the worst scenario. *Rules*:
+
+**Cases**: best, average, worst, excepted, every.
+
+**Measures** 
+- Big O notation - the worse case
+- Omega notation - the best case
+- Theta notation - the average case
+
+### Big O
   - f(n) steps = O(f(N))
   - g(N) steps followed by f(N) steps ⇒ O(g(N) + f(N))
   - g(N) steps followed by f(N) steps, if f(N) > g(N) ⇒ O(f(N))
@@ -18,7 +34,29 @@
 
 ![Algorithms complexity](/pictures/complexity.png)
 
-**P vs NP**: P - algorithms with deterministic number of steps, NP - algorithms without deterministic number of steps where you need to make assumptions but the solution if found can be checked for a deterministic time.
+### Masters theorem
+For estimation of recurrence relations.
+
+![img.png](pictures/masters.png)
+
+### Divide and Conquer Algorithms
+
+1. *Divide*: Divide the given problem into sub-problems (using recursion).
+2. *Conquer*: Solve the smaller sub-problems recursively. If the subproblem is small enough, then solve it directly.
+3. *Combine*: Combine the solutions of the sub-problems.
+
+Complexity according to the [Masters theorem](#Masters-theorem): **O(n log n)**
+
+*Pros*:
+- usually  memory-safe,
+- suitable for multithreaded programs
+
+Don't store the result of any sub-problem for future referencing (in difference with dynamic algorithms)
+
+### P vs NP
+
+P - algorithms with deterministic number of steps, []
+NP - algorithms without deterministic number of steps where you need to make assumptions but the solution if found can be checked for a deterministic time.
 
 ## Numerical algorithms 
 
@@ -55,9 +93,31 @@ LCM = (A / GDC(A,B)) * B
 
 **Prime factorization** is a process of splitting a number into prime multipliers. Algorithm = check all numbers from 2 to a square root of the input. 
 
-
-
 # Data structures
 
+Data structure is a storage that is used to store and organize data. It is a way of arranging data on a computer so that it can be accessed and updated efficiently.
+
+- **linear** (array, linked list, stack, queue)
+  - complexity increase proportionally to data set size
+  - pretty simple, but less efficient in memory consumption
+  - can be traversed by one pass
+- **non-linear** (graph, tree):
+  - keep the same level of complexity with increasing amount of data
+  - more complex, but more efficient in memory consumption,
+  - can't be traversed by one pass
+
+## Stack
+
+![img.png](pictures/stack.png)
+
+- *LIFO* - last-in, first-out
+- operations:
+  - push - add an element to the top
+  - pop - remove an element from the top
+  - peek - get an element from the top without removing
+  - isEmpty
+  - isFull
+
+## Queue
 
 

@@ -120,4 +120,18 @@ Data structure is a storage that is used to store and organize data. It is a way
 
 ## Queue
 
+![img.png](pictures/queue.png)
+
+- *FIFO* - first in, first out
+- operations
+  - enqueue (offer) - add an element to the bottom, **O(1)**
+  - dequeue (poll) - withdraw an element from the top, **O(1)**
+  - peek - get an element from the top **O(1)**
+  - isEmpty
+  - isFull
+- types:
+  - *circular queue* - better memory utilization: when the rear index reach the end of the array, we can use free slots in the beginning
+  - *priority queue* - all elements have their priority and are processed regarding this priority. 
+  - *dequeue* - insertion and removal can be performed from both sides. 
+
 

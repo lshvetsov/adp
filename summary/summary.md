@@ -131,7 +131,7 @@ Data structure is a storage that is used to store and organize data. It is a way
   - isFull
 - types:
   - *circular queue* - better memory utilization: when the rear index reach the end of the array, we can use free slots in the beginning
-  - *priority queue* - all elements have their priority and are processed regarding this priority. 
+  - *priority queue* - all elements have their priority and are processed regarding this priority (implementation based on LinkedList, BinaryHeap, or BinaryTree)
   - *dequeue* - insertion and removal can be performed from both sides. 
 
 

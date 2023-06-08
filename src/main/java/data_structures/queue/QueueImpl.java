@@ -12,6 +12,13 @@ public class QueueImpl<T> implements Queue<T> {
         this.array = new Object[size];
     }
 
+    public QueueImpl(int size, int front, int rear) {
+        this.capacity = size;
+        this.array = new Object[size];
+        this.front = front;
+        this.rear = rear;
+    }
+
     @Override
     public void offer(T element) {
 

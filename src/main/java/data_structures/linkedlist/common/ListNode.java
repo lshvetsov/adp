@@ -1,20 +1,20 @@
-package data_structures.linkedlist;
+package data_structures.linkedlist.common;
 
 public class ListNode {
 
-    int val;
-    ListNode next;
+    public int val;
+    public ListNode next;
 
-    ListNode() {
+    public ListNode() {
         this.val = 0;
         this.next = null;
     }
-    ListNode(int x) {
+    public ListNode(int x) {
         this.val = x;
         this.next = null;
     }
 
-    ListNode(int x, ListNode next) {
+    public ListNode(int x, ListNode next) {
         this.val = x;
         this.next = next;
     }

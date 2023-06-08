@@ -1,6 +1,10 @@
 package data_structures.linkedlist;
 
+import data_structures.linkedlist.common.ListNode;
+
 public class Task2 {
+
+    private Task2(){}
 
     public static void main(String[] args) {
 

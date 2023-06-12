@@ -1,3 +1,15 @@
+# Table of content
+
+[//]: # (TODO Add)
+
+# Links
+
+- [Programiz course](https://www.programiz.com/dsa/algorithm)
+- [Algorithms and data structures in JS](https://github.com/trekhleb/javascript-algorithms)
+- Data structures in Habr: 
+  - [Article 1](https://habr.com/ru/companies/netologyru/articles/334914/)
+  - [Article 2](https://habr.com/ru/articles/128457/)
+
 # Algorithms 
 
 In computer programming terms, an algorithm is a set of well-defined instructions to solve a particular problem. It takes a set of input(s) and produces the desired output.
@@ -106,32 +118,134 @@ Data structure is a storage that is used to store and organize data. It is a way
   - more complex, but more efficient in memory consumption,
   - can't be traversed by one pass
 
-## Stack
+## Linear
+
+### Stack
 
 ![img.png](pictures/stack.png)
 
-- *LIFO* - last-in, first-out
-- operations:
+*LIFO* - last-in, first-out
+
+Operations:
   - push - add an element to the top
   - pop - remove an element from the top
   - peek - get an element from the top without removing
   - isEmpty
   - isFull
 
-## Queue
+| Space | Search | Insertion | Deletion | 
+|:-----:|:------:|:---------:|:--------:|
+| O(n)  | 	O(n)  |   O(1)    |   O(1)   | 
+
+
+### Queue
 
 ![img.png](pictures/queue.png)
 
-- *FIFO* - first in, first out
-- operations
+*FIFO* - first in, first out
+
+Operations
   - enqueue (offer) - add an element to the bottom, **O(1)**
   - dequeue (poll) - withdraw an element from the top, **O(1)**
   - peek - get an element from the top **O(1)**
   - isEmpty
   - isFull
-- types:
+
+Types:
   - *circular queue* - better memory utilization: when the rear index reach the end of the array, we can use free slots in the beginning
   - *priority queue* - all elements have their priority and are processed regarding this priority (implementation based on LinkedList, BinaryHeap, or BinaryTree)
   - *dequeue* - insertion and removal can be performed from both sides. 
 
+| Space | Search | Insertion | Deletion | 
+|:-----:|:------:|:---------:|:--------:|
+| O(n)  | 	O(n)  |   O(1)    |   O(1)   | 
 
+
+### LinkedList
+
+Linear data structure that includes a series of connected nodes, where each node stores the data and the address of the next node.
+
+![LinkedList.png](pictures/linked-list.png)
+
+**Types**
+- singly - each node points to the next one
+- doubly - two pointers in each node: to the previous and the consequent elements
+- circular - last elements has a reference to the first one
+
+**Operations**
+- traverse - go through all nodes of the list
+- insert
+- delete
+- search - find a node
+- sort
+
+| Space | Search/Traverse | Insertion | Deletion |
+|:-----:|:---------------:|:---------:|:--------:|
+| O(n)  |      O(n)       |   O(1)    |   O(1)   | 
+
+## Tree
+
+Data structure consisting of *nodes* (key | value + a pointer to the next node) and *edges* (links between nodes). 
+
+**Terminology**:
+- *root* - the top node, 
+- *leaf* - node without a pointer to the next node,
+- *internal node* - node with a pointer to the next node,
+- *height of the node* - number of edges from a node to the deepest leaf (bottom)
+- *depth of the node* - number of edges from a node to the root (up)
+- *height of the tree* - number of edges from a node to the root to the deepest leaf
+- *degree of node* - number of branches the node have
+- *forest* - several disjoint trees. 
+
+### Heap
+
+Complete *binary tree* that satisfy to one of the *heap properties*:
+- *max heap property* - a node is always greater than its children and the root is maximum
+- *min heap property* - a node is always smaller than its children and the root is minimum
+
+![Max heap](pictures/max-heap.png)
+
+Operations:
+- heapify - create a heap from a linear structure | restructure it
+- insert - add an element (node) and heapify
+- delete - delete an element and heapify
+- peek (max/min) - get the root
+- extract (max/min) - poll the root and heapify 
+
+| Peek | Search | Insertion | Deletion  | Space |
+|:----:|:------:|:---------:|:---------:|:-----:|
+| O(1) | 	O(n)  | O(log(n)) | O(log(n)) | O(n)  |
+
+
+
+
+## Other
+
+## Hash Table
+
+Data structure that store elements in key-value pairs: *key* - indexes of values, *values* - associated data stored in e.g. array. 
+
+![HashTable.png](pictures/hash-table.png)
+
+*Hash function* is used to calculate a key. 
+The key feature of the hash function is the ability to avoid *collisions* (situations when the hash function generate the same keys for different values).
+
+**Collision resolving**
+- chaining (LinkedList connected to a index)
+- open addressing (calculating a new index)
+  - linear probing - set the value in adjacent slots 
+  - quadratic probing - slots increase quadratic (not linear)
+  - double hashing - calculate hash one more time
+
+**Good hashing functions**
+- division - ```k mod m``` (k - key, m - size of a table)
+- multiplication
+- universal - index is chosen independent from keys. 
+
+| Space | Search* | Insertion* | Deletion* |
+|:-----:|:-------:|:----------:|:---------:|
+| O(n)  |  O(1)   |    O(1)    |   O(1)    | 
+
+<sup>*</sup> Search, Insertion and deletion operations can be O(n) when:
+- using bad hashing function (all pair are in the same index slot). 
+- hash table is full and we need to re-structure it. 

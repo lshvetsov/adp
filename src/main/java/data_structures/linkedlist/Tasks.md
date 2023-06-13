@@ -59,3 +59,8 @@ append iterator.next() to the end of res
 return res
 ```
 If res matches the expected flattened list, then your code will be judged as correct.
+
+### Task 5. Leetcode: 23. Merge k Sorted Lists
+
+You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.  
+Merge all the linked-lists into one sorted linked-list and return it.

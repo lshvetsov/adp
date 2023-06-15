@@ -1,10 +1,23 @@
 # Table of content
 
-[//]: # (TODO Add)
+[Algorithms](#algorithms)
+1. [Complexity](#algorithms-complexity)
+2. [Numerical](#numerical-algorithms)
+
+[Data structures](#data-structures)  
+1. [Linear. Stack](#stack)
+2. [Linear. Queue](#queue)
+3. [Linear. LinkedList](#linkedlist)
+4. [Tree. General](#tree)
+5. [Tree. BTS](#binary-search-tree--bst-)
+6. [Tree. AVL](#avl-tree)
+7. [Other. HashTable](#hash-table)
+
 
 # Links
 
 - [Programiz course](https://www.programiz.com/dsa/algorithm)
+- [Data structures in BSC](http://www.btechsmartclass.com/data_structures/introduction-to-algorithms.html)
 - [Algorithms and data structures in JS](https://github.com/trekhleb/javascript-algorithms)
 - Data structures in Habr: 
   - [Article 1](https://habr.com/ru/companies/netologyru/articles/334914/)
@@ -191,11 +204,103 @@ Data structure consisting of *nodes* (key | value + a pointer to the next node) 
 - *root* - the top node, 
 - *leaf* - node without a pointer to the next node,
 - *internal node* - node with a pointer to the next node,
-- *height of the node* - number of edges from a node to the deepest leaf (bottom)
-- *depth of the node* - number of edges from a node to the root (up)
-- *height of the tree* - number of edges from a node to the root to the deepest leaf
+- *height of the node* - number of edges *from a node to the deepest leaf* (bottom)
+- *depth of the node* - number of edges *from a node to the root* (up)
+- *height of the tree* - number of edges *from the root to the deepest leaf*
 - *degree of node* - number of branches the node have
 - *forest* - several disjoint trees. 
+
+**Tree traversal**
+![traversal example](pictures/traversal_example.png)
+- *inorder* - left branch/left leaf -> root -> right branch/right leaf: 5 -> 12 -> 6 -> 1 -> 9
+```java
+public void traverse(Node node){
+    if(node!=null){
+        traverse(node.left);
+        System.out.print(" "+node.key);
+        traverse(node.right);
+    }
+}
+```
+- *preorder* - root -> left branch -> right branch: 1 -> 12 -> 5 -> 6 -> 9
+```java
+public void traverse(Node node) {
+    if (node != null) {
+        System.out.print(" " + node.key);
+        traverse(node.left);
+        traverse(node.right);
+    }
+}
+```
+- *postorder* - left branch/left leaf -> right branch/right leaf -> root: 5 -> 6 -> 12 -> 9 -> 1
+```java
+public void traverse(Node node) {
+    if (node != null) {
+        traverse(node.left);
+        traverse(node.right);
+        System.out.print(" " + node.key);
+    }
+}
+```
+
+### Binary tree
+
+Tree data structure where each node can have two children at most. Node = value + link to the right node + link to the left node.
+
+Types:
+- *full* - each node has 2 or 0 children.
+- *perfect* - each node has 2 children + leaves are on the same level
+- *complete* - like a full, but: leaves lean to the left + the right branch might not have a right leaf
+  ![complete binary tree](pictures/complete_binary_tree.png)
+- *degenerate (pathological)* - each node has only right or left child
+  ![degenerate binary tree](pictures/degenerate_binary_tree.png)
+- *skewed* - type of the pathological tree, all nodes go to the left or right
+- *balanced* - difference between height of the right and left subtrees is 0 | 1  
+
+  |Balances tree            |         Unbalanced tree         |   
+  |:-------------------------------:|:-------------------------:|  
+  |![](pictures/balanced_tree.png)|![](pictures/unbalanced_tree.png)|
+
+### Binary search tree (BST)
+
+All nodes to the left of the root is less than the root and all nodes to the right of the root is bigger than the root.
+Each and every subtree is BST too.
+
+Operations:
+- insertion
+- deletion (of a leaf, of an internal node with one or two sub-nodes)
+
+|   Search    | Insertion  |  Deletion  | Space |
+|:-----------:|:----------:|:----------:|:-----:|
+| 	O(log(n))* | O(log(n))* | O(log(n))* | O(n)  |
+
+<sup>*</sup> Search, Insertion and deletion operations can be O(n) when all nodes have only one sub-node. 
+
+### AVL tree
+
+AVL tree is a self-balancing binary search tree in which each node maintains extra information called a balance factor whose value is either -1, 0 or +1.
+
+**Balance factor** = height of the left subtree - height of the right subtree. 
+
+**Operations** 
+- insertion
+- deletion
+- search
+- rotation
+
+When we *insert* or *delete* something we need to balance tree by performing rotation operation. 
+
+**Rotations**
+- single left rotation - every node move one position left
+- single right rotation - every node move one position right
+- left right rotation - single left -> single right
+- right left rotation - single right -> single left
+
+|   Search    | Insertion  |  Deletion  | Space |
+|:-----------:|:----------:|:----------:|:-----:|
+| 	O(log(n))* | O(log(n))* | O(log(n))* | O(n)  |
+
+![img.png](pictures/AVL.png)
 
 ### Heap
 
@@ -215,8 +320,6 @@ Operations:
 | Peek | Search | Insertion | Deletion  | Space |
 |:----:|:------:|:---------:|:---------:|:-----:|
 | O(1) | 	O(n)  | O(log(n)) | O(log(n)) | O(n)  |
-
-
 
 
 ## Other

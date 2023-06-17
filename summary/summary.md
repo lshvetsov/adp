@@ -196,6 +196,7 @@ Linear data structure that includes a series of connected nodes, where each node
 |:-----:|:---------------:|:---------:|:--------:|
 | O(n)  |      O(n)       |   O(1)    |   O(1)   | 
 
+
 ## Tree
 
 Data structure consisting of *nodes* (key | value + a pointer to the next node) and *edges* (links between nodes). 
@@ -245,9 +246,10 @@ public void traverse(Node node) {
 
 ### Binary tree
 
-Tree data structure where each node can have two children at most. Node = value + link to the right node + link to the left node.
+Tree data structure where each node can have two children at most. 
+Node = value + link to the right node + link to the left node.
 
-Types:
+**Types**
 - *full* - each node has 2 or 0 children.
 - *perfect* - each node has 2 children + leaves are on the same level
 - *complete* - like a full, but: leaves lean to the left + the right branch might not have a right leaf
@@ -261,10 +263,19 @@ Types:
   |:-------------------------------:|:-------------------------:|  
   |![](pictures/balanced_tree.png)|![](pictures/unbalanced_tree.png)|
 
+**Height <-> Number of nodes**
+
+- *Minimum number of nodes* = height + 1
+- *Maximum number of nodes* = 2<sup>(height+1)</sup>-1
+- *Minimum number of nodes* = floor (log2n)                                                                                              
+- *Maximum number of nodes* = number of nodes - 1
+
 ### Binary search tree (BST)
 
-All nodes to the left of the root is less than the root and all nodes to the right of the root is bigger than the root.
-Each and every subtree is BST too.
+Binary tree structure where: 
+- all nodes to the left of the root is less than the root
+- all nodes to the right of the root is bigger than the root.
+- each and every subtree is BST too.
 
 Operations:
 - insertion
@@ -275,6 +286,8 @@ Operations:
 | 	O(log(n))* | O(log(n))* | O(log(n))* | O(n)  |
 
 <sup>*</sup> Search, Insertion and deletion operations can be O(n) when all nodes have only one sub-node. 
+
+![img.png](pictures/bts.png)
 
 ### AVL tree
 
@@ -300,7 +313,76 @@ When we *insert* or *delete* something we need to balance tree by performing rot
 |:-----------:|:----------:|:----------:|:-----:|
 | 	O(log(n))* | O(log(n))* | O(log(n))* | O(n)  |
 
+<sup>*</sup> Because of self-balancing nature, complexity is always the same. 
+
 ![img.png](pictures/AVL.png)
+
+### B-Tree
+
+B-Tree is a self-balanced tree in which every node can have more than one key and more than 2 children.  
+Number of keys and children defines by the *order* of a B-tree. 
+
+*Reason behind this structure* - save time reading and writing to a hard drive. 
+
+**Rules** of B-tree:
+- keys and children depending on *order n*: keys in [n/2-1; n-1], children in [n/2; n] 
+- all leaves are at the same level
+- root node must have at least 2 children
+- all keys in nodes sorted in ASC
+
+**Operations**
+- search
+- insertion (find the appropriate node + insertion + splitting the node if needed)
+- deletion (find the appropriate node + deletion + balancing the tree)
+
+|   Search   | Insertion | Deletion  | Space |
+|:----------:|:---------:|:---------:|:-----:|
+| 	O(log(n)) | O(log(n)) | O(log(n)) | O(n)  |
+
+![B-Tree](pictures/b-tree.png)
+
+### B+-Tree
+
+Tree structure implementing multi-level indexing which means that only leaf nodes has values. 
+
+|            B-Tree             |            B+-Tree             |   
+|:-----------------------------:|:------------------------------:|  
+| ![](pictures/b_tree_comp.png) | ![](pictures/b+_tree_comp.png) |
+
+**Rules**
+- all leaf nodes at the same level
+- only leaf nodes contains values
+- leaf nodes have links
+- children: root has at least 2 children, other nodes [n/2, n] (n - order of a tree)
+- keys in [n/2-1; n-1]
+
+**Operations**
+- search
+- insertion (find the appropriate node + insertion + balancing/splitting the node if needed)
+- deletion (find the appropriate node + deletion + balancing the tree)
+
+
+### Red-Black Tree
+
+Red Black Tree is a Binary Search Tree in which re-balancing mechanism is based on the color of the node (RED or BLACK).
+
+*Node* = key + color + left node link + right node link + parent link (except of the root)
+
+Rules:
+- each node has a color
+- the root is black
+- leaf nodes are black
+- children of a red node are black
+- every path (root to leaf) have to have the same number of black nodes
+- every new node is red (insertion -> to not violate the rule of the depth in black nodes)
+
+**Operations**
+- search
+- insertion (find the appropriate node + insertion + balancing/splitting the node if needed)
+- deletion (find the appropriate node + deletion + balancing the tree)
+- recoloring/rotation (internal operations for balancing a tree after inserting or deleting a node)
+
+![Red-Black Tree](pictures/RBT.png)
 
 ### Heap
 
@@ -320,7 +402,6 @@ Operations:
 | Peek | Search | Insertion | Deletion  | Space |
 |:----:|:------:|:---------:|:---------:|:-----:|
 | O(1) | 	O(n)  | O(log(n)) | O(log(n)) | O(n)  |
-
 
 ## Other
 

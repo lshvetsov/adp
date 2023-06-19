@@ -118,6 +118,50 @@ LCM = (A / GDC(A,B)) * B
 
 **Prime factorization** is a process of splitting a number into prime multipliers. Algorithm = check all numbers from 2 to a square root of the input. 
 
+## Search algorithms 
+
+### Graph algorithms
+
+The purpose of the algorithms is to mark each vertex as visited while avoiding cycles.
+
+#### DSA (Depth-first search algorithms)
+
+1. Pre-conditions: we have a stack and a visited list
+2. Take any vertex and put into the stack
+3. Take the top element from the stack and put it into visited list
+4. Take all adjacent vertices of the chosen element and put unvisited into the stack
+5. Repeat steps 3-4 withe vertices in the stack until it's empty. 
+
+|  Time  | Search |
+|:------:|:------:|
+| O(V+E) |  O(V)  | 
+
+#### BSA (Breadth-fist search algorithm)
+
+1. Pre-conditions: we have a queue and a visited list
+2. Take any vertex and put into the queue
+3. Take the first element from the queue and put it into visited list
+4. Take all adjacent vertices of the chosen element and put unvisited into the queue
+5. Repeat steps 3-4 withe vertices in the stack until it's empty.
+
+|  Time  | Search |
+|:------:|:------:|
+| O(V+E) |  O(V)  | 
+
+#### Dijkstra's Algorithm
+
+
+#### Bellman Ford's Algorithm
+
+It helps us find the shortest path from a vertex to all other vertices of a weighted graph with possible negative weights of edges.
+
+|         |  Time  | Search |
+|:-------:|:------:|:------:|
+|  Best   |  O(E)  |  O(V)  |
+| Average | O(V*E) |        | 
+|  Worst  | O(V*E) |        | 
+
+
 # Data structures
 
 Data structure is a storage that is used to store and organize data. It is a way of arranging data on a computer so that it can be accessed and updated efficiently.
@@ -402,6 +446,74 @@ Operations:
 | Peek | Search | Insertion | Deletion  | Space |
 |:----:|:------:|:---------:|:---------:|:-----:|
 | O(1) | 	O(n)  | O(log(n)) | O(log(n)) | O(n)  |
+
+
+## Graph
+
+Data structure consisting of nodes (vertices) and edges connecting these nodes.
+
+![img.png](pictures/graph.png)
+
+V (vertices) = {0, 1, 2, 3}  
+E (edges) = {(0,1), (0,2), (0,3), (1,2)}  
+- directed
+- undirected
+- weighted  
+
+**G = {V, E}**
+
+**Terminology**  
+*Adjacency* - a situation when vertices are connected with an edge.  
+*Path* - a sequence of edges between two vertices.
+*Endpoints* - two vertices connected by an edge
+*Origin* | *Destinations* - in a directed graph: initial point and all other points.  
+*Outgoing* | *Incoming* - in a directed graph: an edge from and edge to a vertex respectively. 
+*Degree* | *Indegree* | *Outdegree* - number of edges connected to a vertex (incoming | outgoing for directed graphs)
+*Self-loop* - two endpoint of a edge coincide with each other 
+
+**Types**
+- directed - edge represent one-way connection between nodes
+- undirected - edge represent bidirectional connection between nodes
+- mixed - there directed and undirected edges in a graph
+
+**Spanning tree**  
+  Sub-graph of *undirected* graph which includes all vertices with a minimum possible number of edges.  
+  Total number of options for the graph with n vertices = **n<sup>n-2</sup>**  
+  Minimum spanning tree must minimize the weight of edges (if they are weighted).
+
+**Strongly connected components (SCC)**
+Applicable only for directed graph. Cluster of vertices where there is a path from each vertex to another one.  
+Use *Kosaraju's Algorithm* (Косараджу) to find all cluster of SCC.
+![SCC](pictures/scc.png)
+
+| Space  | Add V | Add E | Remove V | Remove E |
+|:------:|:-----:|:-----:|:--------:|:--------:|
+| O(V+E) | O(1)  | O(1)  |  O(V+E)  |   O(E)   |
+
+### Graph representation
+
+1. *Adjacency matrix* - 2D matrix with vertices as indexes (size: V*V) and values of it indicate the path between vertices (true | false, 1 | 0)  
+Symmetric for an undirected graph
+
+|                              Pros                               |                          Contras                           | 
+|:---------------------------------------------------------------:|:----------------------------------------------------------:|
+| basic operations is very fast (add/remove the edge, check edge) | memory consuming (usually graph don't have som many edges) |
+|                     allow matrix operations                     |                                                            |
+
+![Adjacency matrix](pictures/adjacent_matrix.png)
+
+2. Incidence Matrix - 2D matrix, size V*E, filled with -1, 0 and 1, representing ingoing, outgoing and absence of connection between vertices. 
+
+![Incidence Matrix](pictures/incidence_matrxi.png)
+
+3. *Adjacency linked list* - all connections of one vertex in form of nodes of a LL.
+
+|                       Pros                       |                                   Contras                                    | 
+|:------------------------------------------------:|:----------------------------------------------------------------------------:|
+| memory consumption (only values for real edges)  | difficult to find a list of all adjacent vertices (iterating through all LL) |
+| ease in finding vertices adjacent to the current |                                                                              |
+
+![Adjacency linked list](adjacence_list.png)
 
 ## Other
 

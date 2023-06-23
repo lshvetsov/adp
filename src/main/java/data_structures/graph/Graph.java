@@ -4,10 +4,12 @@ import java.util.*;
 import java.util.stream.IntStream;
 
 public class Graph<T> {
+
     private ArrayDeque<T> searchStack = new ArrayDeque<>();
     private Map<T, LinkedList<T>> adj;
     private Set<T> visited = new HashSet<>();
     boolean result = false;
+    SearchEngine engine = new SearchEngine();
 
     Graph(List<T> vertices) {
         adj = new HashMap<>();
@@ -31,47 +33,43 @@ public class Graph<T> {
 
         adj.keySet().stream().findFirst().ifPresent(x -> searchStack.offer(x));
 
-        switch (type) {
-            case DFS -> dfs(value);
-            case BFS -> bfs(value);
-        }
-
-        return result;
-    }
-
-    public boolean bfs(T value) {
-
-        this.cleanUp();
-        return false;
-    }
-
-    public boolean dfs(T value) {
-
-        T root = searchStack.poll();
-        if (root == null) return false;
-        if (Objects.equals(value, root)) {
-            System.out.printf("Match for value %s found%n", value);
-            return true;
-        }
-
-        System.out.printf("Root node %s doesn't match requested %s, continue searching ....%n", root, value);
-
-        visited.add(root);
-        LinkedList<T> adjacent = adj.get(root);
-
-        for (T item: adjacent) {
-            searchStack.offer(item);
-            if (!visited.contains(item)) {
-                result = dfs(value);
-            }
-        }
+        engine.search(value, searchStack.pollLast(), type);
 
         return result;
     }
 
     private void cleanUp() {
+        searchStack.clear();
         visited.clear();
         result = false;
+    }
+
+    private class SearchEngine {
+
+        public boolean search(T value, T root, SearchType type) {
+
+            if (root == null) return false;
+            if (Objects.equals(value, root)) {
+                System.out.printf("Match for value %s found%n", value);
+                return true;
+            }
+
+            System.out.printf("Root node %s doesn't match requested %s, continue searching ....%n", root, value);
+
+            visited.add(root);
+            adj.get(root).forEach(searchStack::offer);
+
+            T item;
+            do {
+                item = SearchType.DFS.equals(type) ? searchStack.pollLast() : searchStack.pollFirst();
+                if (!visited.contains(item))
+                    result = search(value, item, type);
+                if (result) break;
+            } while (item != null);
+
+            return result;
+        }
+
     }
 
     public static void main(String[] args) {
@@ -84,8 +82,13 @@ public class Graph<T> {
         g.addEdge(2, 3);
         g.addEdge(2, 4);
 
+        System.out.println("DFS -----------------------");
         System.out.println(g.search(4, SearchType.DFS));
         System.out.println(g.search(9, SearchType.DFS));
+
+        System.out.println("BFS -----------------------");
+        System.out.println(g.search(4, SearchType.BFS));
+        System.out.println(g.search(9, SearchType.BFS));
     }
 
 }

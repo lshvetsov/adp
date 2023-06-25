@@ -1,9 +1,9 @@
-package data_structures.graph;
+package algorithms;
 
 import java.util.*;
 import java.util.stream.IntStream;
 
-public class Graph<T> {
+public class GraphSearch<T> {
 
     private ArrayDeque<T> searchStack = new ArrayDeque<>();
     private Map<T, LinkedList<T>> adj;
@@ -11,7 +11,7 @@ public class Graph<T> {
     boolean result = false;
     SearchEngine engine = new SearchEngine();
 
-    Graph(List<T> vertices) {
+    GraphSearch(List<T> vertices) {
         adj = new HashMap<>();
         vertices.forEach(x -> adj.put(x, new LinkedList<>()));
     }
@@ -74,7 +74,7 @@ public class Graph<T> {
 
     public static void main(String[] args) {
 
-        Graph<Integer> g = new Graph<>(IntStream.range(0, 5).boxed().toList());
+        GraphSearch<Integer> g = new GraphSearch<>(IntStream.range(0, 5).boxed().toList());
 
         g.addEdge(0, 1);
         g.addEdge(0, 2);

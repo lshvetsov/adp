@@ -1,4 +1,4 @@
-package algorithms.numeric;
+package algorithms;
 
 import java.security.SecureRandom;
 import java.util.*;

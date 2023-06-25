@@ -120,6 +120,12 @@ LCM = (A / GDC(A,B)) * B
 
 ## Search algorithms 
 
+|    Name     |  Best  | Worst | Average | Space | Stability |
+|:-----------:|:------:|:-----:|:-------:|:-----:|:---------:|
+| Bubble sort |  O(N)  | O(N2) |  O(N2)  | O(1)  |    Yes    | 
+
+**Bubble sort** - Iterating for each element over all rest elements and swapping adjacent ones
+
 ### Graph algorithms
 
 The purpose of the algorithms is to mark each vertex as visited while avoiding cycles.
@@ -513,7 +519,7 @@ Symmetric for an undirected graph
 | memory consumption (only values for real edges)  | difficult to find a list of all adjacent vertices (iterating through all LL) |
 | ease in finding vertices adjacent to the current |                                                                              |
 
-![Adjacency linked list](adjacence_list.png)
+![Adjacency linked list](pictures/adjacence_list.png)
 
 ## Other
 

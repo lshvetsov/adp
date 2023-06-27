@@ -2,9 +2,7 @@ package algorithms.sorting;
 
 public class BubbleSort implements SortAlgorithm{
     @Override
-    public void sort(int[] array) {
-
-        Sorting.print("Bubble sort, initial array", array);
+    public int[] sort(int[] array) {
 
         int size = array.length - 1;
 
@@ -25,7 +23,7 @@ public class BubbleSort implements SortAlgorithm{
 
         }
 
-        Sorting.print("Bubble sort, sorted array", array);
+        return array;
 
     }
 }

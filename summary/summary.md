@@ -120,20 +120,20 @@ LCM = (A / GDC(A,B)) * B
 
 ## Search algorithms 
 
-|      Name      |    Best    |   Worst    |  Average   | Space | Stability* |
-|:--------------:|:----------:|:----------:|:----------:|:-----:|:----------:|
-|  Bubble sort   |    O(N)    |   O(N2)    |   O(N2)    | O(1)  |    Yes     | 
-| Selection sort |   O(N2)    |   O(N2)    |   O(N2)    | O(1)  |     No     |
-| Insertion sort |    O(N)    |   O(N2)    |   O(N2)    | O(1)  |    Yes     |
-|   Merge sort   | O(N*log(N) | O(N*log(N) | O(N*log(N) | O(n)  |    Yes     |
-|   Quick sort   |   O(N2)    |   O(N2)    |   O(N2)    | O(1)  |     No     |
-| Counting sort  |   O(N2)    |   O(N2)    |   O(N2)    | O(1)  |     No     |
-|   Radix sort   |   O(N2)    |   O(N2)    |   O(N2)    | O(1)  |     No     |
-|  Bucket sort   |   O(N2)    |   O(N2)    |   O(N2)    | O(1)  |     No     |
-|   Heap sort    |   O(N2)    |   O(N2)    |   O(N2)    | O(1)  |     No     |
-|   Shell sort   |   O(N2)    |   O(N2)    |   O(N2)    | O(1)  |     No     |
-|  Linear sort   |   O(N2)    |   O(N2)    |   O(N2)    | O(1)  |     No     |
-|  Binary sort   |   O(N2)    |   O(N2)    |   O(N2)    | O(1)  |     No     |
+|      Name      |    Best     |     Worst     |     Average      |   Space   | Stability* |
+|:--------------:|:-----------:|:-------------:|:----------------:|:---------:|:----------:|
+|  Bubble sort   |    O(N)     |     O(N2)     |      O(N2)       |   O(1)    |    Yes     | 
+| Selection sort |    O(N2)    |     O(N2)     |      O(N2)       |   O(1)    |     No     |
+| Insertion sort |    O(N)     |     O(N2)     |      O(N2)       |   O(1)    |    Yes     |
+|   Merge sort   | O(N*log(N)) |  O(N*log(N))  |   O(N*log(N))    |   O(n)    |    Yes     |
+|   Quick sort   | O(N*log(N)) |  O(N*log(N))  |   O(N*log(N))    | O(log(N)) |     No     |    
+| Counting sort  |  O(N+MAX)   |   O(N+MAX)    |     O(N+MAX)     |  O(MAX)   |    Yes     |
+|   Radix sort   |  O(N+MAX)   |   O(N+MAX)    |     O(N+MAX)     |  O(MAX)   |    Yes     |
+|  Bucket sort   |  O(N+MAX)   |     O(N2)     |       O(N)       | O(N+MAX)  |    Yes     |
+|   Heap sort    |    O(N2)    |     O(N2)     |      O(N2)       |   O(1)    |     No     |
+|   Shell sort   |    O(N2)    |     O(N2)     |      O(N2)       |   O(1)    |     No     |
+| Linear search  |    O(N2)    |     O(N2)     |      O(N2)       |   O(1)    |     No     |
+| Binary search  |    O(N2)    |     O(N2)     |      O(N2)       |   O(1)    |     No     |
 
 <sup>*</sup> A *stable* sorting algorithm maintains the relative order of the items with equal sort keys
 
@@ -141,10 +141,10 @@ LCM = (A / GDC(A,B)) * B
 **Selection sort** - Compare each element with others and swap it with the one that is lower than the current. 
 **Insertion sort** - Iterate over the array and insert the element into the sorted part on the proper place.  
 **Merge sort** - Divide & conquer: split the original array into pieces, sort pieces and combine sorted arrays into the result
-**Quick sort** - 
-**Counting sort**
-**Radix sort**
-**Bucket sort**
+**Quick sort** - Divide & conquer: separate elements relatively to the chosen pivot element (< | >) and then split the sequence into two pieces by this pivot element. 
+**Counting sort** - calculate occurrences of elements cumulatively (in an array) and derive the final index of the element from this auxiliary array.   
+**Radix sort** - sorting using any stable sorting algorithm by all digits in numbers of the original array
+**Bucket sort** - Scatter-gather approach: split elements into several buckets -> sort them using any stable sorting algorithm -> combine them into the result one
 **Heap sort**
 **Shell sort**
 **Linear sort**

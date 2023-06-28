@@ -11,6 +11,9 @@ public class Sorting {
         Sorting.execute(new InsertionSort(), new int[]{8, 5, 12, 14, 2, 21, 0});
         Sorting.execute(new MergeSort(), new int[]{8, 5, 12, 14, 2, 21, 0});
         Sorting.execute(new QuickSort(), new int[]{8, 5, 12, 14, 2, 21, 0});
+        Sorting.execute(new CountingSort(), new int[]{8, 5, 12, 14, 2, 21, 0});
+        Sorting.execute(new RadixSort(), new int[]{121, 547, 852, 353, 854, 963, 744, 988, 757, 500});
+        Sorting.execute(new BucketSort(), new int[]{8, 5, 12, 14, 2, 21, 0});
 
     }
 

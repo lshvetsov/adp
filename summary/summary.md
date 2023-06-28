@@ -118,37 +118,51 @@ LCM = (A / GDC(A,B)) * B
 
 **Prime factorization** is a process of splitting a number into prime multipliers. Algorithm = check all numbers from 2 to a square root of the input. 
 
-## Search algorithms 
+## Sorting algorithms 
 
-|      Name      |    Best     |     Worst     |     Average      |   Space   | Stability* |
-|:--------------:|:-----------:|:-------------:|:----------------:|:---------:|:----------:|
-|  Bubble sort   |    O(N)     |     O(N2)     |      O(N2)       |   O(1)    |    Yes     | 
-| Selection sort |    O(N2)    |     O(N2)     |      O(N2)       |   O(1)    |     No     |
-| Insertion sort |    O(N)     |     O(N2)     |      O(N2)       |   O(1)    |    Yes     |
-|   Merge sort   | O(N*log(N)) |  O(N*log(N))  |   O(N*log(N))    |   O(n)    |    Yes     |
-|   Quick sort   | O(N*log(N)) |  O(N*log(N))  |   O(N*log(N))    | O(log(N)) |     No     |    
-| Counting sort  |  O(N+MAX)   |   O(N+MAX)    |     O(N+MAX)     |  O(MAX)   |    Yes     |
-|   Radix sort   |  O(N+MAX)   |   O(N+MAX)    |     O(N+MAX)     |  O(MAX)   |    Yes     |
-|  Bucket sort   |  O(N+MAX)   |     O(N2)     |       O(N)       | O(N+MAX)  |    Yes     |
-|   Heap sort    |    O(N2)    |     O(N2)     |      O(N2)       |   O(1)    |     No     |
-|   Shell sort   |    O(N2)    |     O(N2)     |      O(N2)       |   O(1)    |     No     |
-| Linear search  |    O(N2)    |     O(N2)     |      O(N2)       |   O(1)    |     No     |
-| Binary search  |    O(N2)    |     O(N2)     |      O(N2)       |   O(1)    |     No     |
+|      Name      |    Best     |    Worst    |   Average   |   Space   | Stability* | Use-cases                                                          | Description                                                                                                                                        |
+|:--------------:|:-----------:|:-----------:|:-----------:|:---------:|:----------:|:-------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------|
+|  Bubble sort   |    O(N)     |    O(N2)    |    O(N2)    |   O(1)    |    Yes     | learning, small inputs                                             | Iterating for each element over all rest elements and swapping adjacent ones                                                                       |
+| Selection sort |    O(N2)    |    O(N2)    |    O(N2)    |   O(1)    |     No     | learning, small inputs                                             | Compare each element with others and swap it with the one that is lower than the current                                                           |
+| Insertion sort |    O(N)     |    O(N2)    |    O(N2)    |   O(1)    |    Yes     | small inputs or partly sorted data sets                            | Iterate over the array and insert the element into the sorted part on the proper place.                                                            |
+|   Merge sort   | O(N*log(N)) | O(N*log(N)) | O(N*log(N)) |   O(n)    |    Yes     | large data sets                                                    | Divide & conquer: split the original array into pieces, sort pieces and combine sorted arrays into the result                                      |
+|   Quick sort   | O(N*log(N)) | O(N*log(N)) | O(N*log(N)) | O(log(N)) |     No     | large data sets                                                    | Divide & conquer: separate elements relatively to the chosen pivot element (< >) and then split the sequence into two pieces by this pivot element |   
+| Counting sort  |  O(N+MAX)   |  O(N+MAX)   |  O(N+MAX)   |  O(MAX)   |    Yes     | small range of values                                              | Calculate occurrences of elements cumulatively (in an array) and derive the final index of the element from this auxiliary array                   |
+|   Radix sort   |  O(N+MAX)   |  O(N+MAX)   |  O(N+MAX)   |  O(MAX)   |    Yes     | data sets of integers or strings with fixed lengths                | Sorting using any stable sorting algorithm by all digits in numbers of the original array.                                                         |
+|  Bucket sort   |  O(N+MAX)   |    O(N2)    |    O(N)     | O(N+MAX)  |    Yes     | uniformly distributed values over a range                          | Scatter-gather approach: split elements into several buckets -> sort them using any stable sorting algorithm -> combine them into the result one   |
+|   Heap sort    | O(N*log(N)) | O(N*log(N)) | O(N*log(N)) |   O(1)    |     No     | k larges or smallest elements, when memory usage is concern        | Convert an array to a heap (heapify)                                                                                                               |
+|   Shell sort   | O(N*log(N)) |    O(N2)    | O(N*log(N)) |   O(1)    |     No     | medium-sized datasets where insertion sort is not efficient enough | Iterating and comparing elements of the array based on the pre-defined sequence                                                                    |
 
 <sup>*</sup> A *stable* sorting algorithm maintains the relative order of the items with equal sort keys
 
-**Bubble sort** - Iterating for each element over all rest elements and swapping adjacent ones
-**Selection sort** - Compare each element with others and swap it with the one that is lower than the current. 
-**Insertion sort** - Iterate over the array and insert the element into the sorted part on the proper place.  
-**Merge sort** - Divide & conquer: split the original array into pieces, sort pieces and combine sorted arrays into the result
-**Quick sort** - Divide & conquer: separate elements relatively to the chosen pivot element (< | >) and then split the sequence into two pieces by this pivot element. 
-**Counting sort** - calculate occurrences of elements cumulatively (in an array) and derive the final index of the element from this auxiliary array.   
-**Radix sort** - sorting using any stable sorting algorithm by all digits in numbers of the original array
-**Bucket sort** - Scatter-gather approach: split elements into several buckets -> sort them using any stable sorting algorithm -> combine them into the result one
-**Heap sort**
-**Shell sort**
-**Linear sort**
-**Binary sort**
+1) **Bubble sort** - Iterating for each element over all rest elements and swapping adjacent ones.    
+2) **Selection sort** - Compare each element with others and swap it with the one that is lower than the current.
+3) **Insertion sort** - Iterate over the array and insert the element into the sorted part on the proper place.  
+4) **Merge sort** - Divide & conquer: split the original array into pieces, sort pieces and combine sorted arrays into the result.
+5) **Quick sort** - Divide & conquer: separate elements relatively to the chosen pivot element (< | >) and then split the sequence into two pieces by this pivot element.
+6) **Counting sort** - Calculate occurrences of elements cumulatively (in an array) and derive the final index of the element from this auxiliary array.
+7) **Radix sort** - Sorting using any stable sorting algorithm by all digits in numbers of the original array.
+8) **Bucket sort** - Scatter-gather approach: split elements into several buckets -> sort them using any stable sorting algorithm -> combine them into the result one.
+9) **Heap sort** - Convert an array to a heap (heapify).
+10) **Shell sort** - iterating and comparing elements of the array based on the pre-defined sequence:
+```
+    - Shell's original sequence: N/2 , N/4 , …, 1  
+    - Knuth's increments: 1, 4, 13, …, (3k – 1) / 2  
+    - Sedgewick's increments: 1, 8, 23, 77, 281, 1073, 4193, 16577...4j+1+ 3·2j+ 1  
+    - Hibbard's increments: 1, 3, 7, 15, 31, 63, 127, 255, 511…  
+    - Papernov & Stasevich increment: 1, 3, 5, 9, 17, 33, 65,...  
+    - Pratt: 1, 2, 3, 4, 6, 9, 8, 12, 18, 27, 16, 24, 36, 54, 81...   
+``` 
+
+## Search algorithms 
+
+|      Name      |    Best     |    Worst    |   Average   |   Space   | Stability* |
+|:--------------:|:-----------:|:-----------:|:-----------:|:---------:|:----------:|
+| Linear search  |    O(N2)    |    O(N2)    |    O(N2)    |   O(1)    |     No     |
+| Binary search  |    O(N2)    |    O(N2)    |    O(N2)    |   O(1)    |     No     |
+
+**Linear search**  - XXX  
+**Binary search**  - YYY
 
 
 ### Graph algorithms

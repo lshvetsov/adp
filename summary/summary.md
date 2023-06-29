@@ -156,13 +156,13 @@ LCM = (A / GDC(A,B)) * B
 
 ## Search algorithms 
 
-|      Name      |    Best     |    Worst    |   Average   |   Space   | Stability* |
-|:--------------:|:-----------:|:-----------:|:-----------:|:---------:|:----------:|
-| Linear search  |    O(N2)    |    O(N2)    |    O(N2)    |   O(1)    |     No     |
-| Binary search  |    O(N2)    |    O(N2)    |    O(N2)    |   O(1)    |     No     |
+|      Name      | Best |  Worst   | Average  |   Space   |
+|:--------------:|:----:|:--------:|:--------:|:---------:|
+| Linear search  |  -   |    -     |   O(N)   |   O(1)    |
+| Binary search  | O(1) | O(log N) | O(log N) |   O(1)    | 
 
-**Linear search**  - XXX  
-**Binary search**  - YYY
+1. **Linear search** - very straightforward, go through the elements and compare each one with the target
+2. **Binary search** - only under sorted array, iterative and recursive approach, compare the target with the middle element and then choose the right half of the array to continue comparing
 
 
 ### Graph algorithms

@@ -76,7 +76,24 @@ Complexity according to the [Masters theorem](#Masters-theorem): **O(n log n)**
 - usually  memory-safe,
 - suitable for multithreaded programs
 
-Don't store the result of any sub-problem for future referencing (in difference with dynamic algorithms)
+Don't store the result of any sub-problem for future referencing (in difference with dynamic algorithms). 
+
+[Examples - sorting algorithms](#sorting-algorithms)
+
+### Greedy algorithms
+
+**Greedy approach** means that we try to find the optimal solution on each step of the solution not revising it later. 
+However, the final solution may not be optimal.
+
+*Pre-conditions* to use the greedy approach: 
+- optional solution can be found by finding optimal solutions of each sub-problem it has (*optimal sub-structure*)
+- problem can be solved by finding an optimal solution on each step of it without reconsidering it (*greedy choice property*).
+
+*Pros*
+- easy to understand
+- better performance in many cases
+*Cons* 
+- optimal solution of the whole problem may not be found
 
 ### P vs NP
 
@@ -165,11 +182,11 @@ LCM = (A / GDC(A,B)) * B
 2. **Binary search** - only under sorted array, iterative and recursive approach, compare the target with the middle element and then choose the right half of the array to continue comparing
 
 
-### Graph algorithms
+## Graph algorithms
 
 The purpose of the algorithms is to mark each vertex as visited while avoiding cycles.
 
-#### DSA (Depth-first search algorithms)
+### DSA (Depth-first search algorithms)
 
 1. Pre-conditions: we have a stack and a visited list
 2. Take any vertex and put into the stack
@@ -181,7 +198,7 @@ The purpose of the algorithms is to mark each vertex as visited while avoiding c
 |:------:|:------:|
 | O(V+E) |  O(V)  | 
 
-#### BSA (Breadth-fist search algorithm)
+### BSA (Breadth-fist search algorithm)
 
 1. Pre-conditions: we have a queue and a visited list
 2. Take any vertex and put into the queue
@@ -193,10 +210,8 @@ The purpose of the algorithms is to mark each vertex as visited while avoiding c
 |:------:|:------:|
 | O(V+E) |  O(V)  | 
 
-#### Dijkstra's Algorithm
 
-
-#### Bellman Ford's Algorithm
+### Bellman Ford's Algorithm
 
 It helps us find the shortest path from a vertex to all other vertices of a weighted graph with possible negative weights of edges.
 
@@ -205,6 +220,110 @@ It helps us find the shortest path from a vertex to all other vertices of a weig
 |  Best   |  O(E)  |  O(V)  |
 | Average | O(V*E) |        | 
 |  Worst  | O(V*E) |        | 
+
+## Greedy algorithms 
+
+### Ford-Fulkerson Algorithm
+
+Calculating the maximum possible flow in a network or a graph.
+
+**Use-cases**
+- network flow optimization: e.g. in transportation systems to find the maximum flow of goods from a source to a destination,
+- capacity planning: e.g. the capacity of data channels needs to be optimized to handle the maximum possible traffic,
+- image processing (image segmentation),
+- resource allocation: e.g. assigning tasks to workers, scheduling jobs, etc. 
+
+**Example**
+- we can send 2 items though the top path (limited by the last step)
+- we can send 3 items though the top path (limited by the first step)
+- we can send 2 items though the top path (2/4 in the first 2 nodes) 
+-> send them through the path with 0/3 
+- ->  send them through the last 2 nodes of the bottom path (3/6 in the last 2 nodes)  
+
+Overall score = 2 + 3 + 2 = 7
+
+![FFA](/pictures/FFA.png)
+
+**Time complexity** = O(E * |f|), where E - number of edges, f - maximum flow number
+
+### Dijkstra's Algorithm
+
+Graph traversal algorithm that finds the shortest path from a source vertex to all other vertices in a weighted graph.
+
+The main idea is the process of iteratively selecting the vertex with the smallest distance and updating distances to its neighboring vertices. 
+
+**Flow** 
+
+1) Create a set of unvisited vertices and set the distance from the source vertex to all other vertices as infinity, except the source vertex itself, which is set to 0.
+2) Set the source vertex as the current vertex.
+3) While there are unvisited vertices:
+   - Select the unvisited vertex with the smallest distance as the current vertex. 
+   - Mark the current vertex as visited. 
+   For each neighboring vertex of the current vertex:
+     - Calculate the distance from the source vertex to the neighboring vertex by adding the weight of the edge between them to the distance of the current vertex.
+     - If this calculated distance is smaller than the recorded distance of the neighboring vertex, update the recorded distance with the new value.
+4) Once all vertices have been visited or the destination vertex (if specified) has been visited, the shortest path from the source vertex to each vertex can be determined.
+
+**Use-cases**
+- routing in computer networks
+- GPS navigation systems 
+- transportation and logistics
+- airline flight scheduling
+
+**Time complexity** = O(E Log V), E - number of edges, V - number of vertices. 
+
+## Kruskal's Algorithm
+
+Kruskal's algorithm is a minimum spanning tree algorithm (spanning tree with minimum sum of weights of edges). 
+
+**Use-cases**
+- network design, 
+- construction of roads and pipelines,
+- cluster analysis: where the goal is to group similar data points together
+
+**Flow**
+1. Sort all the edges from low weight to high
+2. Take the edge with the lowest weight and add it to the spanning tree. 
+If adding the edge created a cycle, then reject this edge.
+3. Keep adding edges until we reach all vertices.
+
+**Time complexity** = O(E log E), E - number of edges. 
+
+## Prim's Algorithm
+
+Prim's algorithm is a minimum spanning tree algorithm (spanning tree with minimum sum of weights of edges).
+
+**Use-cases**
+- network design,
+- construction of roads and pipelines,
+- cluster analysis: where the goal is to group similar data points together
+
+**Flow**
+1. Initialize the minimum spanning tree with a vertex chosen at random.
+2. Find all the edges that connect the tree to new vertices, find the minimum and add it to the tree
+3. Keep repeating step 2 until we get a minimum spanning tree
+
+**Time complexity** = O(E log V), V - number of vertices. 
+
+## Huffman Coding
+
+Huffman Coding is a technique of compressing data to reduce its size without losing any of the details, generally useful to compress the data in which there are frequently occurring characters.
+
+**Use-cases**
+
+**Flow**
+![Huff1](/pictures/huff1.png)
+1. Calculate the frequency of each character in the string.
+2. Sort the characters in increasing order of the frequency.
+![Huff2](/pictures/huff3.png)
+3. Make each unique character as a leaf node. 
+4. Form a tree according to the rules.
+![Huff_final](/pictures/huff2.png)
+
+**Time complexity** = O(nlog n);
+
+## Dynamic programming 
+
 
 
 # Data structures

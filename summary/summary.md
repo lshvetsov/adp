@@ -223,6 +223,10 @@ It helps us find the shortest path from a vertex to all other vertices of a weig
 
 ## Greedy algorithms 
 
+Greedy algorithm is an approach for solving a problem by selecting the best option available at the moment. 
+The algorithms never reverse the earlier decision even if the choice is wrong.
+They may not produce the best result for all the problems as they always go for the local best choice to produce the global best result.
+
 ### Ford-Fulkerson Algorithm
 
 Calculating the maximum possible flow in a network or a graph.
@@ -272,7 +276,7 @@ The main idea is the process of iteratively selecting the vertex with the smalle
 
 **Time complexity** = O(E Log V), E - number of edges, V - number of vertices. 
 
-## Kruskal's Algorithm
+### Kruskal's Algorithm
 
 Kruskal's algorithm is a minimum spanning tree algorithm (spanning tree with minimum sum of weights of edges). 
 
@@ -289,7 +293,7 @@ If adding the edge created a cycle, then reject this edge.
 
 **Time complexity** = O(E log E), E - number of edges. 
 
-## Prim's Algorithm
+### Prim's Algorithm
 
 Prim's algorithm is a minimum spanning tree algorithm (spanning tree with minimum sum of weights of edges).
 
@@ -305,7 +309,7 @@ Prim's algorithm is a minimum spanning tree algorithm (spanning tree with minimu
 
 **Time complexity** = O(E log V), V - number of vertices. 
 
-## Huffman Coding
+### Huffman Coding
 
 Huffman Coding is a technique of compressing data to reduce its size without losing any of the details, generally useful to compress the data in which there are frequently occurring characters.
 
@@ -324,6 +328,37 @@ Huffman Coding is a technique of compressing data to reduce its size without los
 
 ## Dynamic programming 
 
+Technique in computer programming that helps to efficiently solve a class of problems that have overlapping sub-problems and optimal substructure property.
+
+If any problem can be divided into sub-problems, which in turn are divided into smaller sub-problems, and if there are overlapping among these sub-problems, then the solutions to these sub-problems can be saved for future reference (memoization). 
+
+- Often applied to recursive algorithms for optimization.
+- in contrast to greedy algorithms it makes an informed decision as solutions of sub-problems present. 
+
+### Floyd-Warshall Algorithm (WFI algorithm)
+
+Algorithm for finding the shortest path between all the pairs of vertices in a weighted graph (directed and undirected), based on matrices
+
+**Usages** - network routing, distance matrix computation, traffic planning and optimization, graph analysis. 
+
+**Complexity**
+- time = O(n3)
+- space = 0(n2)
+
+### Longest Common Subsequence problem
+
+```
+S1 = {B, C, D, A, A, C, D}
+S2 = {A, C, D, B, A, C}
+
+Longest = {C, D, A, C}
+```
+
+## Other technics
+
+**Back tracking algorithms** is a problem-solving algorithm that uses a brute force approach for finding the desired output (if the current solution is not suitable, then backtrack and try other solutions). 
+
+**Rabin-Karp Algorithm** is an algorithm used for searching/matching patterns in the text using a hash function. 
 
 
 # Data structures

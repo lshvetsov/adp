@@ -20,6 +20,10 @@
     - Kruscal's algorithm | Prim's algorithm
     - Huffman coding
 - [ ] Dynamic (0/5)
+    - WFI algorithm
+- [ ] Others
+  - Backtracking algorithm
+  - Rabin-Karp Algorithm
 
 ### Patterns 
 

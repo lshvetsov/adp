@@ -27,4 +27,5 @@
 
 ### Patterns 
 
+See the list of patterns in another project
 
